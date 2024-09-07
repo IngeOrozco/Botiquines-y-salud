@@ -18,10 +18,32 @@
     </div>
 </article>
 <section class="space"></section>
-<?php require_once('app/views/pages/general/principal/components/contents/quienes_somos.php') ?>
+<?php
+require_once('app/views/pages/general/principal/components/contents/quienes_somos.php');
+
+if ($countCtg > 0) {
+?>
 <section class="space"></section>
 <main id="info-images">
-    <a class="image" href="#">
+    <?php
+    foreach ($listCtg as $rowCtg) {
+        if ($rowCtg['fk_etd_ctg'] == 1) {
+            ?>
+            <a class="image" href="?ctrll=producto&&func=view&&ctg=<?= $rowCtg['pk_id_ctg'] ?>">
+                <div class="image-content">
+                <img src="public/uploads/categoria/<?= $rowCtg['img_ctg'] ?>" onerror="this.onerror=null; this.src='public/images/fondos/noImage.png'">
+                </div>
+                <div class="info">
+                    <h5><?= $rowCtg['nom_ctg'] ?></h5>
+                </div>
+            </a>
+            <?php
+        }
+    }
+    // if () {
+    // }
+    ?>
+    <!-- <a class="image" href="#">
         <div class="image-content">
             <img src="public/images/fondos/montania.jpg">
         </div>
@@ -92,8 +114,11 @@
         <div class="info">
             <h5>Vendajes adhesivos (Curitas)</h5>
         </div>
-    </a>
+    </a> -->
 </main>
+<?php
+}
+?>
 <section class="space"></section>
 <article id="presentes">
     <div class="info">
