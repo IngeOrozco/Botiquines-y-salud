@@ -36,7 +36,7 @@ class Md_administrador extends Md_aplicativo
 
         $cnsAdm = "SELECT * FROM administrador adm
         WHERE fk_etd_adm IN (1,2) AND
-        pk_id_adm NOT IN (1) AND
+        pk_id_adm NOT IN (1,2) AND
         pk_id_adm = :pk_id_adm";
 
         $select = $func_cnx->prepare($cnsAdm);
