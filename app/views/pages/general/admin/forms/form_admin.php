@@ -1,5 +1,5 @@
 <section class="space"></section>
-<h5 class="title-space tt-6">Agregar administradores</h5>
+<h5 class="title-space tt-6"><?= !empty($rowAdm) ? 'Modificar Administrador' : 'Agregar Administrador' ?></h5>
 <main id="form-admin">
     <form class="ajax-form" action="?ajax=administrador&&func=crud" data-redirect=".alert" method="POST" novalidate>
         <div class="image-content">
@@ -40,20 +40,30 @@
                 } else {
                     echo '<label class="title" for="fk_etd_adm">Estado *</label>
                             <select name="fk_etd_adm" id="fk_etd_adm">
-                                <option value="1" ' . ($rowAdm['fk_etd_adm'] == 1 ? 'selected' : '') . '>Activo</option>
-                                <option value="2" ' . ($rowAdm['fk_etd_adm'] == 2 ? 'selected' : '') . '>Inactivo</option>
-                            </select>';
+                                <option value="1" ' . ($rowAdm['fk_etd_adm'] == 1 ? 'selected' : '') . '>Activo</option>';
+                    if ($rowAdm['pk_id_adm'] != $_SESSION['num_doc']) {
+                        echo '<option value="2" ' . ($rowAdm['fk_etd_adm'] == 2 ? 'selected' : '') . '>Inactivo</option>';
+                    }
+                    echo '</select>';
                 }
                 ?>
             </div>
-            <p class="info-text">Si está activo funcionará normal, de lo contrario no será autorizado a ingresar al aplicativo.</p>
-            <br>
+            <?php
+                if (!empty($countAdm) && $countAdm > 0) {
+                    echo '<p class="info-text">Si está activo funcionará normal, de lo contrario no será autorizado a ingresar al aplicativo.</p><br>';
+                }
+            ?>
             <div class="buttons">
                 <?php
                 if (!empty($countAdm) && $countAdm > 0) {
                     echo '<input type="hidden" name="pk_id_adm" value="' . $rowAdm['pk_id_adm'] . '" readonly>
-                            <button name="btn-adm-mod" class="green">Modificar</button>
-                            <button type="button" class="red" data-ajax="?ajax=administrador&&func=eliminar" data-redirect=".confirmar">Mover a la papelera</button>';
+                            <button name="btn-adm-mod" class="green">Modificar</button>';
+
+                    if ($rowAdm['pk_id_adm'] != $_SESSION['num_doc']) {
+                        echo '<button type="button" class="red" data-ajax="?ajax=administrador&&func=eliminar" data-redirect=".confirmar">Mover a la papelera</button>';
+                    } else {
+                        echo '<button type="button" class="gray" disabled>Mover a la papelera</button>';
+                    }
                 } else {
                     echo '<button name="btn-adm-add" class="blue">Agregar</button>';
                 }

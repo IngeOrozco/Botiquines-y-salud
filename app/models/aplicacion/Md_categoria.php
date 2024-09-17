@@ -69,8 +69,7 @@ class Md_categoria extends Md_aplicativo
         $funcCnx = $this->conexion();
 
         $cnsCtg = "SELECT pk_id_ctg, nom_ctg FROM categoria
-        WHERE pk_id_ctg != 1 AND
-        fk_etd_ctg IN(1,2)";
+        WHERE fk_etd_ctg IN(1,2)";
 
         $select = $funcCnx->prepare($cnsCtg);
 
@@ -86,8 +85,7 @@ class Md_categoria extends Md_aplicativo
         $funcCnx = $this->conexion();
 
         $cnsCtg = "SELECT pk_id_ctg FROM categoria
-        WHERE pk_id_ctg != 1 AND
-        pk_id_ctg = :pk_id_ctg AND
+        WHERE pk_id_ctg = :pk_id_ctg AND
         fk_etd_ctg IN(1,2)";
 
         $select = $funcCnx->prepare($cnsCtg);

@@ -32,7 +32,7 @@
         </div>
     </div>
     <div class="info-product">
-        <h5 class="tt-3"><?= !empty($rowPrd) ? 'Agregación de producto' : 'Modificación de producto' ?></h5>
+        <h5 class="tt-3"><?= !empty($rowPrd) ? 'Modificar producto' : 'Agregar producto' ?></h5>
         <div class="alert danger"></div>
         <div class="cont">
             <label class="title" for="nom_prd">Nombre *</label>
@@ -43,14 +43,14 @@
             <label class="title" for="des_prd">Descripción</label>
             <textarea name="des_prd" id="des_prd" maxlength="500" placeholder="Descripción del producto"><?= !empty($rowPrd) ? $rowPrd['des_prd'] : '' ?></textarea>
         </div>
-        <?php
-        if ($countCtg > 0) {
-        ?>
             <br>
             <div class="cont">
                 <label class="title" for="fk_ctg_prd">Sección</label>
+        <?php
+        if ($countCtg > 0) {
+        ?>
                 <select name="fk_ctg_prd" id="fk_ctg_prd">
-                    <option value="1" <?= (!empty($rowPrd) && $rowPrd['fk_ctg_prd'] == 1) ? 'selected' : '' ?>>Sin especificar</option>
+                    <option style="color: gray" value="1" <?= (!empty($rowPrd) && $rowPrd['fk_ctg_prd'] == 1) ? 'selected' : '' ?>>Sin especificar</option>
                     <?php
                     foreach ($listCtg as $rowCtg) {
                         if (!empty($rowPrd)) {
@@ -65,10 +65,12 @@
                     }
                     ?>
                 </select>
-            </div>
         <?php
+        } else {
+            echo '<br><h5 style="color: red;">Para poder añadir un producto, debes agregar al menos una categoria</h5>';
         }
         ?>
+            </div>
         <br>
         <div class="cont">
             <label class="title" for="fk_etd_prd">Estado</label>
@@ -97,7 +99,11 @@
                 <button name="btn-prd-mod" class="mod-prd green">Modificar Producto</button>
                 <button type="button" class="del-prd red" data-ajax="?ajax=producto&&func=eliminar" data-redirect=".confirmar">Mover a la Papelera</button>';
             } else {
-                echo '<button name="btn-prd-add" class="add-prd blue">Agregar Producto</button>';
+                if ($countCtg > 0) {
+                    echo '<button name="btn-prd-add" class="add-prd blue">Agregar Producto</button>';
+                } else {
+                    echo '<button type="button" class="add-prd blue" disabled>Agregar Producto</button>';
+                }
             }
             ?>
         </div>

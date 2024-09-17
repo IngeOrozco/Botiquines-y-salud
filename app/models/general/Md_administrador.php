@@ -57,7 +57,7 @@ class Md_administrador extends Md_aplicativo
         ape_adm, ema_adm, fk_etd_adm
         FROM administrador
         WHERE fk_etd_adm IN (1,2) AND
-        pk_id_adm NOT IN(1)";
+        pk_id_adm NOT IN(1,2)";
 
         $select = $funcCnx->prepare($cnsAdm);
 
