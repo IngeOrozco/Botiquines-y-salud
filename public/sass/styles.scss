@@ -1707,9 +1707,7 @@ footer {
 
 /* ----------------------- view_paperBin ----------------------- */
 #paperBin {
-    .content-bar {
-        @include column(auto max-content);
-    }
+    @include column(auto max-content);
 
     .form-bin {
         table {
@@ -1806,7 +1804,7 @@ footer {
         }
     }
 
-    @media (width < 700px) {
+    @media (width < 850px) {
         display: flex;
         flex-direction: column-reverse;
 
@@ -1949,20 +1947,6 @@ footer {
             }
         }
     }
-
-    /* ----------------------- form_product ----------------------- */
-    // #crud-product {
-    //     display: block;
-
-    //     .image-product {
-    //         gap: 20px;
-    //         @include column(50% auto);
-    //     }
-
-    //     .info-product {
-    //         padding: 0 20px;
-    //     }
-    // }
 }
 
 @media (max-width: 500px) {
@@ -1977,23 +1961,6 @@ footer {
             }
         }
     }
-
-    /* ----------------------- form_product ----------------------- */
-    // #crud-product {
-    //     .image-product {
-    //         display: block;
-
-    //         .image-content {
-    //             width: 80%;
-    //             margin: auto;
-    //         }
-
-    //         .sub-images {
-    //             padding: 0 20px;
-    //             margin-top: 20px;
-    //         }
-    //     }
-    // }
 }
 
 @media (max-width: 400px) {

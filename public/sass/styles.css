@@ -1559,7 +1559,7 @@ footer .sub-footer a {
 }
 
 /* ----------------------- view_paperBin ----------------------- */
-#paperBin .content-bar {
+#paperBin {
   display: grid;
   grid-template-columns: auto max-content;
 }
@@ -1641,7 +1641,7 @@ footer .sub-footer a {
 #paperBin .slide-menu ul li:nth-child(even):before {
   rotate: -8deg;
 }
-@media (width < 700px) {
+@media (width < 850px) {
   #paperBin {
     display: flex;
     flex-direction: column-reverse;
@@ -1753,14 +1753,12 @@ footer .sub-footer a {
   #mision-vision.policy .content-image::before {
     display: none;
   }
-  /* ----------------------- form_product ----------------------- */
 }
 @media (max-width: 500px) {
   /* ----------------------- inicio ----------------------- */
   #quienes-somos .division .image-content .image {
     width: 80%;
   }
-  /* ----------------------- form_product ----------------------- */
 }
 @media (max-width: 400px) {
   #sign .background {
